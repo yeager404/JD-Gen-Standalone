@@ -11,6 +11,7 @@ const createJob = async (req, res) => {
       employmentType,
       requiredSkills,
       additionalInfo,
+      jobDeadline,
       educationRequirements,
       jobDescriptionMarkdown,
     } = req.body;
@@ -21,6 +22,7 @@ const createJob = async (req, res) => {
       yearsOfExperience,
       keywords,
       jobLocation,
+      jobDeadline,
       employmentType,
       requiredSkills,
       additionalInfo,
@@ -30,14 +32,15 @@ const createJob = async (req, res) => {
 
     const savedJob = await newJob.save();
 
-    return res.status(201).json({
+    return res.status(200).json({
+      success: true,
       message: "Job created successfully",
       jobId: savedJob._id
     });
 
   } catch (error) {
     console.error("Error creating job:", error);
-    return res.status(500).json({ error: "Internal Server Error" });
+    return res.status(500).json({ error: "Internal Server Error", success: false });
   }
 };
 

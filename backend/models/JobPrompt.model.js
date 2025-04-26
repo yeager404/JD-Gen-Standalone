@@ -39,6 +39,9 @@ const jobPrompt = new mongoose.Schema({
   jobDescriptionMarkdown:{
     type: String,
   },
+  jobDeadline: {
+    type: Date,
+  },
   responses:[
     {
       type: mongoose.Schema.Types.ObjectId,
